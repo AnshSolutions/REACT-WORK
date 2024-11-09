@@ -1,0 +1,26 @@
+In React, the UI changes without refreshing the page due to its virtual DOM and reactive updates. Here's how it works under the hood:
+
+1. Virtual DOM
+React uses a concept called the virtual DOM, which is a lightweight copy of the actual DOM (the HTML structure displayed in the browser).
+ When you make a change to the application state (like a button click or form input), React doesn't directly modify the real DOM. Instead, 
+ it updates the virtual DOM first.
+2. State Changes and Re-Renders
+When the state of a component changes (via useState or this.setState in class components), React triggers a re-render of that component. 
+However, it doesn't re-render the entire application. 
+Instead, it re-renders only the component that has changed, and the virtual DOM is updated with the new state.
+3. Reconciliation
+Once React detects that the state has changed and a re-render is triggered, it compares the updated virtual DOM 
+with the previous virtual DOM (this process is called reconciliation). It performs a diffing algorithm to find 
+the minimal set of changes needed to update the actual DOM.
+This diffing algorithm allows React to efficiently determine what parts of the UI need to be updated and to 
+only apply the changes that are necessary.
+5. Re-rendering the Components
+After the comparison between the virtual DOM and the real DOM is done, React will apply only the changes 
+(the difference or "diff") to the real DOM. This can involve:
+Adding, removing, or updating elements in the DOM.
+Updating component props and state without reloading the entire page.
+6. No Full Page Refresh
+Because React does not reload the page, it creates a single-page application (SPA). The browser never refreshes 
+the page, so users experience smoother and faster interactions as React only updates the necessary parts of the 
+UI.
+
